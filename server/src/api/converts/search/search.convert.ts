@@ -1,13 +1,11 @@
 
-import { ISearch, IPrice } from './interface';
+import { ISearch } from './interface';
+import { IPrice, IAuthor } from '../interface';
 import { ProductApi } from '../../connector/products/interface';
 export class SearchConvert {
-    convert(data: ProductApi.ISearchResponse): ISearch {
+    convert(data: ProductApi.ISearchResponse, author: IAuthor): ISearch {
         return {
-            author: {
-                name: 'Miguel Angel',
-                lastname: 'Chauca Sanchez'
-            },
+            author,
             categories: [],
             items: data.results.map((result) => ({
                 id: result.id,

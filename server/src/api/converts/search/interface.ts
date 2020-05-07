@@ -1,20 +1,6 @@
-export interface IPrice {
-    currency: string;
-    amount: number;
-    decimals: number;
-}
+import { IAuthor, IProduct } from '../interface';
 export interface ISearch {
-    author: {
-        name: string;
-        lastname: string;
-    };
+    author: IAuthor;
     categories: string[];
-    items:{
-        id: string;
-        title: string;
-        price: IPrice;
-        picture: string;
-        condition: string;
-        free_shipping: Boolean;
-    }[];
+    items: IProduct[];
 }

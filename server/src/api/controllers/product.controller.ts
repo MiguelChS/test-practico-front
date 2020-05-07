@@ -6,7 +6,16 @@ export class ProductController {
     ) { }
     public search = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const response = await this.productService.search(req.params);
+            const response = await this.productService.search(req.query);
+            res.status(200).json(response);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    public details = async(req: Request, res: Response, next: NextFunction) => {
+        try {
+            const response = await this.productService.detail(req.params);
             res.status(200).json(response);
         } catch (error) {
             next(error);
