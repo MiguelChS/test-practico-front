@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "node dist/bin/www.js",
     "react:start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "prebuild":"rm -rf dist build",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "react-scripts build",
     "build:server": "tsc --p ./server/tsconfig.json",
-    "test:server": "jest --coverage --config ./server/jest.config.js",
-    "start": "node dist/bin/www.js"
+    "test": "npm run test:server && npm run test:client -- --watchAll=false",
+    "test:client": "react-scripts test --coverage",
+    "eject": "react-scripts eject",
+    "test:server": "jest --coverage --config ./server/jest.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
