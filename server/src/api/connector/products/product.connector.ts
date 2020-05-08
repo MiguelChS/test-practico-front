@@ -1,6 +1,7 @@
 import { config, } from '../config/endpoints';
 import { Request, request } from '../helper/request';
 import { uriParser } from '../helper/uriParse';
+import { ProductApi } from './interface';
 export class ProductConnector {
     constructor(
         private request: Request
@@ -10,7 +11,7 @@ export class ProductConnector {
         const uri = uriParser(url, {
             query
         })
-        return this.request.execute({
+        return this.request.execute<ProductApi.ISearchResponse>({
             url: uri,
             method,
             timeout
@@ -22,7 +23,7 @@ export class ProductConnector {
         const uri = uriParser(url, {
             id
         });
-        return this.request.execute({
+        return this.request.execute<ProductApi.IDetailsResponse>({
             url: uri,
             method,
             timeout
@@ -34,7 +35,19 @@ export class ProductConnector {
         const uri = uriParser(url, {
             id
         });
-        return this.request.execute({
+        return this.request.execute<ProductApi.IDescripcionResponse>({
+            url: uri,
+            method,
+            timeout
+        });
+    }
+
+    categories(id: string) {
+        const { url, method, timeout } = config.category;
+        const uri = uriParser(url, {
+            id
+        });
+        return this.request.execute<ProductApi.ICategoryResponse>({
             url: uri,
             method,
             timeout

@@ -32,4 +32,10 @@ export namespace ProductApi {
     export interface IDescripcionResponse {
         plain_text: string;
     }
+
+    export interface ICategoryResponse {
+        path_from_root: {
+            name: string;
+        }[]
+    }
 }

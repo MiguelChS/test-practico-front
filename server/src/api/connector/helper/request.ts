@@ -1,8 +1,8 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { ErrorStandar } from '../../../utils/errorStandar';
-export interface IResponse {
+export interface IResponse<T> {
     status: number;
-    data: any;
+    data: T;
     message?: string;
     headers?: any;
 }
@@ -12,7 +12,7 @@ export class Request {
     constructor() {
         this.http = axios.create({ timeout: 10000 });
     }
-    public async execute(options: AxiosRequestConfig): Promise<IResponse> {
+    public async execute<T>(options: AxiosRequestConfig): Promise<IResponse<T>> {
         try {
             const { data, status } = await this.http.request(options);
             return { data, status };

@@ -6,7 +6,6 @@ module.exports = {
             tsConfig: "./server/tsconfig.json",
         },
     },
-    silent: true,
     transform: {
         "^.+\\.tsx?$": "ts-jest",
     },

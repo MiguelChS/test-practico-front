@@ -15,7 +15,9 @@ export class ProductService {
             throw new ErrorStandar('params q is required', 400);
         }
         const { data } = await this.connector.search(q);
-        return this.searchConvert.convert(data, author);
+        const categoriId = this.searchConvert.getCategoryWithMoreResult(data);
+        const responseCategory = await this.connector.categories(categoriId);
+        return this.searchConvert.convert(data, author, responseCategory.data);
     }
 
     async detail({ id }: any) {
@@ -25,7 +27,8 @@ export class ProductService {
                 this.connector.description(id)
             ]
         );
-        return this.detailConvert.convert(responseDetails.data, responseDescription.data, author);
+        const responseCategory = await this.connector.categories(responseDetails.data.category_id);
+        return this.detailConvert.convert(responseDetails.data, responseDescription.data, author, responseCategory.data);
     }
 
 }

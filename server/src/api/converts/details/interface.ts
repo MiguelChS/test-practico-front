@@ -8,4 +8,5 @@ export interface IProductDetails extends IProduct {
 export interface IDatail {
     author: IAuthor;
     items: IProductDetails;
+    categories: string[];
 }

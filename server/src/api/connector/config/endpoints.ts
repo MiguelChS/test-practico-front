@@ -10,9 +10,9 @@ interface IConfig {
     product: {
         details: IEndpoint;
         description: IEndpoint;
-    }
+    };
+    category: IEndpoint;
 }
-
 
 export const config: IConfig = {
     search: {
@@ -31,5 +31,10 @@ export const config: IConfig = {
             url: `https://api.mercadolibre.com/items/:id/description`,
             method: 'GET',
         }
+    },
+    category: {
+        timeout: 5000,
+        url: 'https://api.mercadolibre.com/categories/:id',
+        method: "GET"
     }
 }
