@@ -10,7 +10,7 @@ export class DetailConvert {
                 id: data.id,
                 title: data.title,
                 condition: data.condition,
-                picture: data.thumbnail,
+                picture: data?.pictures?.[0]?.secure_url || data.thumbnail,
                 description: descriptionResponse.plain_text,
                 free_shipping: data.shipping.free_shipping,
                 price: this.getPrice(data),

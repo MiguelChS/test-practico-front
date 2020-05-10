@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin:0;
+    background: #EEEEEE;
+  }
+  p {
+    margin: 0;
   }
 `
 ReactDOM.render(

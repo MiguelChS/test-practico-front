@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
     display:flex;
     overflow: hidden;
     border-radius: 4px;
+    width: 100%;
 `;
 
 export const Input = styled.input`

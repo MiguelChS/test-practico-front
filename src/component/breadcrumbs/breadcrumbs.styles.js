@@ -3,13 +3,18 @@ import styled from 'styled-components';
 export const Ul = styled.ul`
     margin: 0;
     list-style: none;
-    padding: 0;
+    padding: 8px 0;
+    display: flex;
+    flex-wrap: wrap;
+    @media(min-width: 768px) {
+        padding: 16px 0;
+    }
 `;
 
 export const Li = styled.li`
-    float: left;
     color: #999999;
     font-size: 14px;
+    line-height: 20px;
     margin-right: 8px;
 `;
 

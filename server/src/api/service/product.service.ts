@@ -16,8 +16,13 @@ export class ProductService {
         }
         const { data } = await this.connector.search(q);
         const categoriId = this.searchConvert.getCategoryWithMoreResult(data);
-        const responseCategory = await this.connector.categories(categoriId);
-        return this.searchConvert.convert(data, author, responseCategory.data);
+        let responseCategory;
+        if (categoriId) {
+            responseCategory = await this.connector.categories(categoriId);
+        }
+        const resultConvert = this.searchConvert.convert(data, author, responseCategory?.data || null);
+        resultConvert.items = resultConvert.items.slice(0, 4);
+        return resultConvert;
     }
 
     async detail({ id }: any) {
@@ -28,7 +33,7 @@ export class ProductService {
             ]
         );
         const responseCategory = await this.connector.categories(responseDetails.data.category_id);
-        return this.detailConvert.convert(responseDetails.data, responseDescription.data, author, responseCategory.data);
+        return this.detailConvert.convert(responseDetails.data, responseDescription.data, author, responseCategory.data)
     }
 
 }

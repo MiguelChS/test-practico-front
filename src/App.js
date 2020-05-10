@@ -1,28 +1,24 @@
 import React from 'react';
-import { Header } from './component/header/header';
-import { Breadcrumbs } from './component/breadcrumbs/breadcrumbs';
-
-const listWord = [
-  {
-    href:"#",
-    text:'Hola'
-  },
-  {
-    href:"#",
-    text:'chau'
-  },
-  {
-    href:"#",
-    text:'besis'
-  }
-]
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Search } from './pages/Search';
+import { Details } from './pages/Details';
 
 function App() {
   return (
-    <div className="App">
-      <Header></Header>
-      <Breadcrumbs listWord={listWord}></Breadcrumbs>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home></Home>
+        </Route>
+        <Route exact path="/items">
+          <Search></Search>
+        </Route>
+        <Route exact path="/items/:id">
+          <Details></Details>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

@@ -25,7 +25,6 @@ describe('app server', () => {
             .mockResolvedValueOnce({ data: expectDetails.response.category })
         const response = await appServer.get('/api/items/MLA841967810');
         expect(response.status).toEqual(200);
-        console.log(JSON.stringify(response.body))
         expect(response.body).toEqual(expectDetails.expect);
     });
 })

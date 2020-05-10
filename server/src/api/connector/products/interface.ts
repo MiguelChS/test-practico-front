@@ -27,6 +27,9 @@ export namespace ProductApi {
             free_shipping: boolean;
         }
         sold_quantity: number;
+        pictures: {
+            secure_url: string;
+        }[]
     }
 
     export interface IDescripcionResponse {

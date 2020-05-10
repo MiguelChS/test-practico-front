@@ -1,17 +1,14 @@
 import React from 'react';
-import { Header as HeaderStyle, WrapperHeader, Wraaper, Logo } from './header.styles';
+import { Header as HeaderStyle, WrapperHeader, Logo } from './header.styles';
 
-
-export const Header = () => {
+export const Header = ({ children }) => {
     return (
         <WrapperHeader>
             <HeaderStyle>
-                <Logo src={process.env.PUBLIC_URL + '/assets/Logo_ML.png'} />
-                <Wraaper
-                    icon={process.env.PUBLIC_URL + '/assets/ic_Search.png'}
-                    placeholder="Nunca dejes de buscar"
-                    onClick={()=>{}}>
-                </Wraaper>
+                <a href="/">
+                    <Logo src={process.env.PUBLIC_URL + '/assets/Logo_ML.png'} />
+                </a>
+                {children}
             </HeaderStyle>
         </WrapperHeader>
     )

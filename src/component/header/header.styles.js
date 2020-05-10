@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { SearchBox } from '../search-box/search-box';
 
 export const WrapperHeader = styled.header`
   background: #FFE600;
@@ -19,7 +18,3 @@ export const Logo = styled.img`
     margin-right: 16px;
   }
 `
-
-export const Wraaper = styled(SearchBox)`
-  flex: 1;
-`;

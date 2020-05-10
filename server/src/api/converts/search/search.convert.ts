@@ -3,10 +3,10 @@ import { ISearch } from './interface';
 import { IPrice, IAuthor } from '../interface';
 import { ProductApi } from '../../connector/products/interface';
 export class SearchConvert {
-    convert(data: ProductApi.ISearchResponse, author: IAuthor, categories: ProductApi.ICategoryResponse): ISearch {
+    convert(data: ProductApi.ISearchResponse, author: IAuthor, categories: ProductApi.ICategoryResponse | null): ISearch {
         return {
             author,
-            categories: categories.path_from_root.map(item => item.name),
+            categories: categories?.path_from_root.map(item => item.name) || [],
             items: data.results.map((result) => ({
                 id: result.id,
                 title: result.title,
